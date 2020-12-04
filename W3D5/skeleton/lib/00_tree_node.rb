@@ -8,20 +8,25 @@ class PolyTreeNode
         @children = []
     end
 
+    #node here is the parent
     def parent=(node)
         
         if @parent != node && !node.nil?
-            previous_parent = self.parent
-            previous_parent.remove_child(self)
+            # debugger
+            previous_parent = @parent
+            previous_parent.remove_child(self) if !previous_parent.nil?
             @parent = node
             node.children << self
         else
             @parent = nil
         end
     end
+
+    
+    #node here is the child
     def remove_child(node)
         raise "node is not a child" if node.parent == nil
-        self.parent = nil 
+        node.parent = nil
     end
 
 end
