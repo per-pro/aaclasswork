@@ -9,11 +9,19 @@ class PolyTreeNode
     end
 
     def parent=(node)
-        # debugger
-        @parent = node
-        if @parent != node
+        
+        if @parent != node && !node.nil?
+            previous_parent = self.parent
+            previous_parent.remove_child(self)
+            @parent = node
             node.children << self
+        else
+            @parent = nil
         end
+    end
+    def remove_child(node)
+        raise "node is not a child" if node.parent == nil
+        self.parent = nil 
     end
 
 end
