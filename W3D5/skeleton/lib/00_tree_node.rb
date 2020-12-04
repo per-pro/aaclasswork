@@ -5,28 +5,35 @@ class PolyTreeNode
     def initialize(value)
         @value = value
         @parent = nil
+        # @old_parent = nil
         @children = []
     end
 
     #node here is the parent
     def parent=(node)
-        
-        if @parent != node && !node.nil?
-            # debugger
-            previous_parent = @parent
-            previous_parent.remove_child(self) if !previous_parent.nil?
+        # debugger
+        if @parent != node && !node.nil?  
+            # if !@parent.nil?
+            #     @parent.remove_child(self)
+            #     @parent.children.delete(self)
+            # end 
             @parent = node
             node.children << self
         else
             @parent = nil
         end
     end
+    #node here is the child
+    def add_child(node)
+        node.parent = self
+    end
 
-    
     #node here is the child
     def remove_child(node)
         raise "node is not a child" if node.parent == nil
         node.parent = nil
     end
+
+    
 
 end
