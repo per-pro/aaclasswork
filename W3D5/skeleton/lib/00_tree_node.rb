@@ -35,19 +35,19 @@ class PolyTreeNode
         node.parent = nil
     end
 
-    
-end
-
-
-class Searchable
-     debugger
+    #  debugger
     # check the root, if it is equal to value return it
     # call dfs on the children of root 
     # return nil if not found
-    def dfs(value)
-       
-        return self if value == self.value
-
+    def dfs(target)
+        # debugger
+        return nil if self.value.nil?
+        return self if target == self.value
+        self.children.each do |child|
+            search_result = child.dfs(target)
+            return search_result unless child.empty?
+        end
+        nil
     end
 
     def bfs(value)
