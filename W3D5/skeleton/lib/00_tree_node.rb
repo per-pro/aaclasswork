@@ -37,3 +37,22 @@ class PolyTreeNode
 
     
 end
+
+
+class Searchable
+     debugger
+    # check the root, if it is equal to value return it
+    # call dfs on the children of root 
+    # return nil if not found
+    def dfs(value)
+       
+        return self if value == self.value
+
+    end
+
+    def bfs(value)
+        
+    end
+
+    
+end
