@@ -51,9 +51,16 @@ class PolyTreeNode
     end
 
     def bfs(target)
-        return self.value if self.value == target
+        return self if self.value == target
+        arr = []
+        arr << self.children
         self.children.each do |node|
-            return node if node.value == target
+            arr << node.children
+            if node.value == target
+                return node
+            else
+                arr.pop
+            end
         end
         nil
     end
