@@ -14,9 +14,17 @@ class KnightPathFinder
         if (x - 1 < 0 || y - 1 < 0  || x- 2 < 0 || y - 2 < 0 ) 
             raise "invalid move"
         end
+        x += 1
+    #    possible =[ [1,2],[2,1]]
+        possible =  []
+        possible << [x+]
         
 
         
+    end
+
+    def new_move_positions(pos)
+
     end
 
     
