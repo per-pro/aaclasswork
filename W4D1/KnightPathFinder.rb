@@ -30,7 +30,7 @@ class KnightPathFinder
     
     def new_move_positions(pos)
         new_pos = []
-        self.valid_moves(pos).each do |arr|
+        KnightPathFinder.valid_moves(pos).each do |arr|
             if !@considered_positions.include?(arr)
                 @considered_positions << arr
                 new_pos << arr 
@@ -40,10 +40,17 @@ class KnightPathFinder
     end
 
     def build_move_tree(position)
-        unless position.empty? position.each do |node|
-             node.bfs()
+        nodes =[]
+        nodes << @root_node
+        until nodes.empty? 
+            node = nodes.shift
+            return node if node.value == position
+            nodes.concat(new_move_positions(position))
         end
     end
 
     
-end
+end 
+
+kpf = KnightPathFinder.new([0,0])
+kpf.build_move_tree([2,1])
