@@ -8,15 +8,9 @@ class KnightPathFinder
 
     def self.valid_moves(pos)
         x, y = pos[0], pos[1]
-        if (x + 1 > 7 || y + 1 > 7  || x+ 2 > 7 || y + 2 > 7 ) 
-            raise "invalid move"
-        end
-        
-        if (x - 1 < 0 || y - 1 < 0  || x- 2 < 0 || y - 2 < 0 ) 
-            raise "invalid move"
-        end
 
-        possible =  []
+        range = (0..7).to_a
+        possible = []
         possible << [x + 1, y + 2]
         possible << [x + 1, y - 2]
         possible << [x + 2, y + 1]
@@ -25,6 +19,12 @@ class KnightPathFinder
         possible << [x - 1, y - 2]
         possible << [x - 2, y + 1]
         possible << [x - 2, y - 1]
+        
+        possible.select! do |pos|
+            x, y = pos[0], pos[1]
+            pos if range.include?(x) && range.include?(y)
+        end
+
         possible
     end
     

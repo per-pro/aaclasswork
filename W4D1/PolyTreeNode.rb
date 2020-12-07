@@ -1,5 +1,6 @@
 class PolyTreeNode
-    attr_reader :value, :parent, :children
+    attr_reader :parent, :children
+    attr_accessor :value
     def initialize(value)
         @value = value
         @parent = nil
@@ -45,7 +46,7 @@ class PolyTreeNode
         end
         nil
       end
-      
+
       def bfs(target = nil, &prc)
         raise "Need a proc or target" if [target, prc].none?
         prc ||= Proc.new { |node| node.value == target }
