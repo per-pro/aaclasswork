@@ -1,5 +1,5 @@
 require_relative "PolyTreeNode.rb"
-
+require "byebug"
 class KnightPathFinder
     def initialize(starting_pos)
         @root_node = PolyTreeNode.new(starting_pos)
@@ -40,12 +40,20 @@ class KnightPathFinder
     end
 
     def build_move_tree(position)
+
         nodes =[]
         nodes << @root_node
         until nodes.empty? 
             node = nodes.shift
+            debugger
             return node if node.value == position
-            nodes.concat(new_move_positions(position))
+            new_move_positions(position).each do |pos|
+                move = PolyTreeNode.new(pos)
+                nodes << move
+                node.add_child(move)
+            end
+            nodes.concat(node.children)
+
         end
     end
 
@@ -53,4 +61,4 @@ class KnightPathFinder
 end 
 
 kpf = KnightPathFinder.new([0,0])
-kpf.build_move_tree([2,1])
+p kpf.build_move_tree([2,1])
