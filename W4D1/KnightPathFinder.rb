@@ -15,11 +15,11 @@ class KnightPathFinder
         possible << [x + 1, y - 2]
         possible << [x + 2, y + 1]
         possible << [x + 2, y - 1]
+        # debugger        
         possible << [x - 1, y + 2]
         possible << [x - 1, y - 2]
         possible << [x - 2, y + 1]
         possible << [x - 2, y - 1]
-        
         possible.select! do |pos|
             x, y = pos[0], pos[1]
             pos if range.include?(x) && range.include?(y)
@@ -43,11 +43,13 @@ class KnightPathFinder
 
         nodes =[]
         nodes << @root_node
+        path = []
         until nodes.empty? 
             node = nodes.shift
-            debugger
+            path << node 
+            # debugger
             return node if node.value == position
-            new_move_positions(position).each do |pos|
+            new_move_positions(node.value).each do |pos|
                 move = PolyTreeNode.new(pos)
                 nodes << move
                 node.add_child(move)
@@ -55,6 +57,7 @@ class KnightPathFinder
             nodes.concat(node.children)
 
         end
+
     end
 
     

@@ -64,4 +64,8 @@ class PolyTreeNode
       def count
         1 + children.map(&:count).inject(:+)
       end
+
+      def inspect
+        p self.value.inspect
+    end
 end
