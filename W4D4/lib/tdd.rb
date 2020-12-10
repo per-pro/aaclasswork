@@ -10,6 +10,19 @@ class Array
     end
 
     def two_sum
+        arr = []
+        i = 0
+        while i < length
+            j = 0
+            while j < length
+                arr << [i, j] if self[i] + self[j] == 0 && j > i 
+
+                j += 1
+            end
+            i += 1
+        end
+
+        arr
         # hash = Hash.new(0)
         # arr = []
         # self.each_with_index do |n, i|

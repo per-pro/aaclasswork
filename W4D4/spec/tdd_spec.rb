@@ -34,7 +34,27 @@ describe Array do
             it "gets correct output" do 
                 expect(arr.two_sum).to_not eq([[4, 0], [3, 2]])
             end
+            it "doesn't return spurious pairs" do
+                expect(arr.two_sum).to_not eq([[0, 4], [1, 1], [2, 3]])
+            end
         end        
+    end
 
+    describe "Array#my_transpose" do
+        subject(:matrix) {[
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8]
+          ]}
+
+        context "valid input" do
+            it "returns false if matrix not square" do         
+                expect([matrix[0]].length).to_not eq(matrix.length)
+            end
+            it "returns true if matrix is square" do         
+                expect(matrix[0].length).to eq(matrix.length)
+            end
+
+        end
     end
 end
