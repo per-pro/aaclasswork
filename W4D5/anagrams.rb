@@ -9,7 +9,7 @@ def first_anagram?(string1, string2) #O(n!)
     return false
 end
 
-# p first_anagram?("elvis", "lives")    #=> true
+# p first_anagram?("barbiedoll", "illbarebod")    #=> true
 # Cubic
 def second_anagram?(string1, string2)
     arr = string2.split("")
@@ -23,14 +23,14 @@ def second_anagram?(string1, string2)
     false
 end
 
-# p second_anagram?("elvis", "lives")    #=> true
+# p second_anagram?("barbiedoll", "illbarebod")    #=> true
 # p second_anagram?("trump", "winner")    #=> false
 #loglinear beacuse sort uses quicksort
 def third_anagram?(string1, string2)
     string1.split("").sort == string2.split("").sort 
 end
 
-# p third_anagram?("elvis", "lives")    #=> true
+# p third_anagram?("barbiedoll", "illbarebod")    #=> true
 # p third_anagram?("trump", "winner")    #=> false
 
 def fourth_anagram?(string1, string2)
@@ -42,5 +42,5 @@ def fourth_anagram?(string1, string2)
 
 end
 
-p fourth_anagram?("elvis", "lives")    #=> true
+p fourth_anagram?("barbiedoll", "illbarebod")    #=> true
 p fourth_anagram?("trump", "winner")    #=> false#
