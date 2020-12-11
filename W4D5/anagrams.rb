@@ -10,7 +10,7 @@ def first_anagram?(string1, string2) #O(n!)
 end
 
 # p first_anagram?("elvis", "lives")    #=> true
-
+# Cubic
 def second_anagram?(string1, string2)
     arr = string2.split("")
     string1.each_char do |char|
@@ -23,5 +23,24 @@ def second_anagram?(string1, string2)
     false
 end
 
-p second_anagram?("elvis", "lives")    #=> true
-p second_anagram?("trump", "winner")    #=> false
+# p second_anagram?("elvis", "lives")    #=> true
+# p second_anagram?("trump", "winner")    #=> false
+#loglinear beacuse sort uses quicksort
+def third_anagram?(string1, string2)
+    string1.split("").sort == string2.split("").sort 
+end
+
+# p third_anagram?("elvis", "lives")    #=> true
+# p third_anagram?("trump", "winner")    #=> false
+
+def fourth_anagram?(string1, string2)
+    hash = Hash.new(0)
+
+    string1.each_char {|char| hash[char] += 1}
+    string2.each_char {|char| hash[char] -= 1}
+    hash.all? {|k,v| v.zero?}
+
+end
+
+p fourth_anagram?("elvis", "lives")    #=> true
+p fourth_anagram?("trump", "winner")    #=> false#
