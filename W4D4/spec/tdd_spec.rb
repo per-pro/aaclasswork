@@ -74,6 +74,16 @@ describe Array do
     describe "Array#stock_picker" do
         #check we're not selling before we bought it
         #check output is correct
-        
+        subject(:stocks) {[800, 200, 100, 300, 700, 500]}
+        describe "maximizes profit" do 
+            it "get max pair" do
+                expect(stocks.stock_picker).to eq([2, 4])
+            end
+        end
+        describe "checks correct day" do
+            it "only sells after we buy" do 
+                expect(stocks.stock_picker).to_not eq([0, 2])
+            end
+        end
     end
 end

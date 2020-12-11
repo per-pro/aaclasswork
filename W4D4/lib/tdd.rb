@@ -45,4 +45,22 @@ require "byebug"
         new_arr
     end
 
+    def stock_picker
+        pair = []
+        max = 0
+        i = 0
+        while i < length - 2
+            j = i + 1
+            while j < length - 1
+                if max < self[j] - self[i]
+                    max = self[j] - self[i]
+                    pair = [i, j]
+                end
+                j += 1
+            end
+            i += 1
+        end
+        pair
+    end
+
 end
