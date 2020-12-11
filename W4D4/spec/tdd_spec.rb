@@ -48,13 +48,19 @@ describe Array do
           ]}
 
         context "valid input" do
-            it "returns false if matrix not square" do         
-                expect([matrix[0]].length).to_not eq(matrix.length)
-            end
             it "returns true if matrix is square" do         
-                expect(matrix[0].length).to eq(matrix.length)
+                valid_dimension = matrix.all? {|row| row.length == matrix.length}
+                expect(valid_dimension).to be true
             end
-
+        end
+        describe "valid output" do
+            it "returns correct output" do
+                expect(matrix.my_transpose).to eq([
+                    [0, 3, 6],
+                    [1, 4, 7],
+                    [2, 5, 8]
+                ])
+            end
         end
     end
 end
