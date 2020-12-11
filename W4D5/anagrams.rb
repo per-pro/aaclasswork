@@ -32,7 +32,7 @@ end
 
 # p third_anagram?("barbiedoll", "illbarebod")    #=> true
 # p third_anagram?("trump", "winner")    #=> false
-
+#O(n) -- linear time
 def fourth_anagram?(string1, string2)
     hash = Hash.new(0)
 
