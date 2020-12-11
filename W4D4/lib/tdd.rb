@@ -63,4 +63,8 @@ require "byebug"
         pair
     end
 
+    def towers_hanoi
+        
+    end
+
 end

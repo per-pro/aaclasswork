@@ -86,4 +86,33 @@ describe Array do
             end
         end
     end
+
+    #1 Only one disk can be moved at a time.
+
+    #2 Each move consists of taking the upper disk from one of the stacks
+    #  and placing it on top of another stack or on an empty rod.
+
+    #3 No larger disk may be placed on top of a smaller disk.
+
+    #disk goes to array thats empty or smaller than top disk of stack
+    #check for game won condition => final config. is achieved
+    #can only move 1 disk at a time
+
+    describe "Array#towers_hanoi" do
+        subject(:towers) {[[1,2,3], [], []]}
+        context "check moves" do
+            describe "permits valid move" do
+                it "handles first move correctly" do
+                    
+                end
+            end
+            describe "raises error if invalid move" do
+
+            end
+        end
+
+        describe "checks if game completed" do
+
+        end
+    end
 end
