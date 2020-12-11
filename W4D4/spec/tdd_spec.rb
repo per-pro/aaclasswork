@@ -62,5 +62,18 @@ describe Array do
                 ])
             end
         end
+
+        describe "doesn't rely on .transpose method" do
+            it "doesn't use .transpose" do
+                expect(matrix).to_not receive(:transpose)
+                matrix.my_transpose
+            end
+        end
+    end
+
+    describe "Array#stock_picker" do
+        #check we're not selling before we bought it
+        #check output is correct
+        
     end
 end

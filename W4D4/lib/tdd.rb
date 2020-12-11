@@ -37,10 +37,8 @@ class Array
 require "byebug"
     def my_transpose
         new_arr = Array.new(length) {Array.new(length, 0)}
-        # debugger
         self.each_with_index do |row, idx1|
-            # idx2 = 0
-            row.each do |el, idx2|
+            row.each_with_index do |el, idx2|
                 new_arr[idx1][idx2] = self[idx2][idx1]
             end 
         end
