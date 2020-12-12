@@ -1,3 +1,4 @@
+require "byebug"
 def bad_two_sum?(arr, target_sum)
     arr.each_with_index do |el1, idx1|
         arr.each_with_index do |el2, idx2|
@@ -23,12 +24,13 @@ end
 
 def two_sum?(arr, target_sum)
     hash = Hash.new(0)
-    arr.each_with_index {|ele, idx| hash[idx] = ele}
-    # hash.values.any? would this iterate twice?
+    arr.each_with_index {|ele, idx| hash[target_sum - ele] = idx}
+    arr.each {|el| }
+    #hash.values.any? would this iterate twice?
     
     hash.any? {|k, v| target_sum - v}
 end
 
-p two_sum?(arr, 6) # => should be true
+# p two_sum?(arr, 6) # => should be true
 p two_sum?(arr, 10) # => should be false
 
