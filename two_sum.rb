@@ -19,10 +19,16 @@ def okay_two_sum?(arr, target_sum)
     sorted.each_with_index {|num, i| idx = i if num < target_sum} #O(n)
     (0...idx).each {|i| return true if sorted[i] + sorted[i+1] == target_sum} #O(n)
     return false
-
-
 end
 
-# p okay_two_sum?(arr, 6) # => should be true
-# p okay_two_sum?(arr, 10) # => should be false
+def two_sum?(arr, target_sum)
+    hash = Hash.new(0)
+    arr.each_with_index {|ele, idx| hash[idx] = ele}
+    # hash.values.any? would this iterate twice?
+    
+    hash.any? {|k, v| target_sum - v}
+end
+
+p two_sum?(arr, 6) # => should be true
+p two_sum?(arr, 10) # => should be false
 
