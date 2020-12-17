@@ -1,5 +1,6 @@
 require_relative "database"
 require_relative "question"
+require_relative "reply"
 
 class User
     attr_accessor :id, :fname, :lname 
