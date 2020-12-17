@@ -1,4 +1,6 @@
 require_relative "database"
+require_relative "users"
+require_relative "reply"
 
 class Question
     attr_accessor :id, :title, :body, :user_id
@@ -32,6 +34,11 @@ class Question
 
     def author 
         raise "#{self} not in database" unless self.id
+        User.find_by_id(self.user_id)
+    end
+
+    def replies
+        Reply.find_by_question_id(self.id)
     end
 
 
