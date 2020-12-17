@@ -53,8 +53,14 @@ class Reply
         Reply.find_by_id(self.reply_id)
     end
 
-    def child_reply
-        
-    end
+    # def child_replies(question_id, id)
+    #     replies = QuestionsDatabase.instance.execute(<<-SQL, self.question_id, self.id)
+    #         SELECT *
+    #         FROM replies
+    #         WHERE self.question_id = question_id AND self.id  id
+    #     SQL
+    #     return nil unless replies.length > 0
+    #     Reply.new(replies.first))
+    # end
 
 end
