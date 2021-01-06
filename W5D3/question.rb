@@ -1,5 +1,5 @@
 require_relative "database"
-require_relative "users"
+require_relative "user"
 require_relative "reply"
 
 class Question

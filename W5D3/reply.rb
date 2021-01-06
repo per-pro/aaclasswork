@@ -1,7 +1,9 @@
 require_relative "database"
+require_relative "question"
+require_relative "user"
 
 class Reply
-    attr_accessor :id, :body, :user_id, :question_id
+    attr_accessor :id, :body, :user_id, :question_id, :reply_id
 
     def self.find_by_id(id)
         reply = QuestionsDatabase.instance.execute(<<-SQL, id)
@@ -53,14 +55,14 @@ class Reply
         Reply.find_by_id(self.reply_id)
     end
 
-    # def child_replies(question_id, id)
-    #     replies = QuestionsDatabase.instance.execute(<<-SQL, self.question_id, self.id)
-    #         SELECT *
-    #         FROM replies
-    #         WHERE self.question_id = question_id AND self.id  id
-    #     SQL
-    #     return nil unless replies.length > 0
-    #     Reply.new(replies.first))
-    # end
+    def child_replies(question_id, id)
+        replies = QuestionsDatabase.instance.execute(<<-SQL, self.question_id, self.id)
+            SELECT *
+            FROM replies
+            WHERE self.question_id = question_id AND (self.id - 1) = id
+        SQL
+        return nil unless replies.length > 0
+        Reply.new(replies.first)
+    end
 
 end
