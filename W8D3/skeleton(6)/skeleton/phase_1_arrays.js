@@ -37,4 +37,3 @@ Array.prototype.transpose = function() {
     }
     return arr
 }
-
