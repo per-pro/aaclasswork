@@ -16,3 +16,17 @@ Array.prototype.myMap = function(cb) {
     this.myEach(getResult)
     return mapArr
 }
+
+Array.prototype.myReduce = function(cb, initialVal) {
+    let arr = this
+    if (initialVal === undefined) {
+        initialVal = this[0]
+        arr = this.slice(1,this.length)
+    }
+    let accumulator = initialVal
+    let acc = function(ele) {
+        accumulator = cb(accumulator, ele)
+    }
+    arr.myEach(acc)
+    return accumulator
+}
