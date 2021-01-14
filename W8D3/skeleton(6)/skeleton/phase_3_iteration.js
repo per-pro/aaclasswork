@@ -6,10 +6,10 @@ Array.prototype.bubbleSort = function() {
         while (i < this.length - 1) {
             if (this[i + 1] < this[i]) {
                 sorted = false
-                // [this[i], this[i + 1]] = [this[i + 1], this[i]]
-                let temp = this[i + 1]
-                this[i + 1] = this[i]
-                this[i] = temp
+                [this[i], this[i + 1]] = [this[i + 1], this[i]]
+                // let temp = this[i + 1]
+                // this[i + 1] = this[i]
+                // this[i] = temp
             }
             i++;
         }
