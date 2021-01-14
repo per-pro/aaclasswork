@@ -17,3 +17,13 @@ Array.prototype.bubbleSort = function() {
     return this
 }
 
+String.prototype.substrings = function() {
+    let strings = []
+    for(let i = 0; i < this.length; i++) {
+        for(let j = i + 1; j < this.length; j++) {
+            strings.push(this.slice(i, j))
+        }
+    }
+    return strings
+}
+
