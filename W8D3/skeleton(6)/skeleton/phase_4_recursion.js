@@ -35,14 +35,18 @@ let exponentB = function(base, exponent) {
 }
 
 let fib = function(int) {
-    fibs = []
     if (int === 1) {
-        fibs = [1]
-        return fibs
+        return [1]
     } else if (int === 2) {
-        fibs = [1, 1]
-        return fibs
+        return [1, 1]
     }
-    let nextFib = fibs[fibs.length - 1] + fibs[fibs.length - 2]
-    return fibs
+    let prevFib = fib(int - 1)
+    return prevFib.concat(prevFib[prevFib.length - 1] + prevFib[prevFib.length - 2])
+}
+
+let deepDup = function(arr) {
+    if (arr.length === 0) {
+        return []
+    }
+    
 }
