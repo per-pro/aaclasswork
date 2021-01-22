@@ -9,7 +9,8 @@
 User.destroy_all
 Tweet.destroy_all
 
-CATS = %w(breakfast earl curie markov gizmo kiki sally)
+# CATS = %w(breakfast earl curie markov gizmo kiki sally)
+CATS = %w(earl1 earl2 earl3 earl4 earl5 earl6 earl7)
 
 CATS.each do |cat|
   u = User.create!(username: cat, password: "#{cat}#{cat}")

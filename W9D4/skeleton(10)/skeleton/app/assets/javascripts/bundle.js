@@ -9,8 +9,18 @@
 
 function FollowToggle($el) {
     this.$el = $el;
-    this.userId = $('#data-user-id');
-    this.followState = $('#data-initial-follow-state');
+    this.userId = this.$el.data('user-id');
+    this.followState = this.$el.data('initial-follow-state');
+    this.render()
+};
+
+FollowToggle.prototype.render = function () {
+    // debugger
+    if (this.followState === false) {
+        this.$el.html("Follow!")
+    } else if (this.followState === true) {
+        this.$el.html("Unfollow!")
+    }
 };
 
 module.exports = FollowToggle;
@@ -49,11 +59,15 @@ module.exports = FollowToggle;
   \*****************************/
 const FollowToggle = __webpack_require__(/*! ./follow_toggle */ "./frontend/follow_toggle.js")
 
-__webpack_require__(/*! ./follow_toggle */ "./frontend/follow_toggle.js")
+document.addEventListener('DOMContentLoaded', () => {
+  $('button.follow-toggle').each(function(idx, btn) {
+    // debugger
+    console.log(new FollowToggle($(btn)))
+  })
 
-$('button.follow-toggle').each(function(idx, btn) {
-  new FollowToggle(btn)
 })
+
+
 
 
 
