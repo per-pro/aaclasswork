@@ -37,9 +37,11 @@ class DOMNodeCollection {
     };
 
     addClass(...className){
-        if (typeof className === "array") {
-            
-        }else if (typeof className === "string"){
+        if (typeof className[0] === "array") {
+            className.forEach(ele => {
+              this.classList.add("ele")  
+            })
+        }else if (typeof className[0] === "string"){
 
         }
 
@@ -48,9 +50,12 @@ class DOMNodeCollection {
     removeClass(...className = null){
         if (!className){
 
-        }else if (typeof className === "array") {
+        }else if (typeof className[0] === "array") {
+            className.forEach(ele => {
+                this.classList.remove("ele")  
+              })
             
-        }else if (typeof className === "string"){
+        }else if (typeof className[0] === "string"){
 
         }
 
