@@ -24,10 +24,40 @@ class DOMNodeCollection {
             this.forEach(node => {
                 node.innerHTML += content.outerHTML
             })
-        } else if (typeof content === "") {
+        } else if (typeof content === "HTMLElement") {
+            this.forEach(node => {
+                node.innerHTML += content.outerHTML
+
+            });
+        }
+    };
+
+    attr(element) {
+        return element.attributes
+    };
+
+    addClass(...className){
+        if (typeof className === "array") {
+            
+        }else if (typeof className === "string"){
 
         }
+
     }
+
+    removeClass(...className = null){
+        if (!className){
+
+        }else if (typeof className === "array") {
+            
+        }else if (typeof className === "string"){
+
+        }
+
+
+    }
+
+
 }
 
 
