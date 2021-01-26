@@ -3,29 +3,31 @@ class DOMNodeCollection {
         this.array = array 
     }
 
-    html(string = null) {
+    html(string) {
         if (string) {
-            this.forEach(node => {
+            this.array.forEach(node => {
                 node.innerHTML = string
             })
-        } else if (!string) {
-            return this[0].innerHTML
+        } else if (string === undefined) {
+            return this.array[0].innerHTML
         }
     }
 
     empty() {
-        this.html("")
+        this.array.forEach(node => {
+            node.innerHTML = ""
+        })
     }
 
     append(content) {
         if(typeof content === "object") {
             content = $l(content)
         } else if (typeof content === "string") {
-            this.forEach(node => {
+            this.array.forEach(node => {
                 node.innerHTML += content.outerHTML
             })
         } else if (typeof content === "HTMLElement") {
-            this.forEach(node => {
+            this.array.forEach(node => {
                 node.innerHTML += content.outerHTML
 
             });
@@ -37,27 +39,23 @@ class DOMNodeCollection {
     };
 
     addClass(...className){
-        if (typeof className[0] === "array") {
-            className.forEach(ele => {
-              this.classList.add("ele")  
-            })
-        }else if (typeof className[0] === "string"){
-
-        }
-
+        this.array.forEach(node => {
+            node.classList.add(...className)  
+        })
     }
 
-    removeClass(...className = null){
-        if (!className){
-
-        }else if (typeof className[0] === "array") {
-            className.forEach(ele => {
-                this.classList.remove("ele")  
-              })
-            
-        }else if (typeof className[0] === "string"){
-
+    removeClass(...className) {
+        if (className === []) {
+            this.array.forEach(node => {
+                let cl = Array.from(node.classList)
+                node.classList.remove(...cl)
+            })
+        } else {
+            this.array.forEach(node => {
+                node.classList.remove(...className)
+            })
         }
+            
 
 
     }
@@ -65,13 +63,4 @@ class DOMNodeCollection {
 
 }
 
-
-
-
-
-
-
-
 module.exports = DOMNodeCollection
-
-

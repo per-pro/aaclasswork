@@ -1,16 +1,10 @@
-const dmc = require("/Users/trevor/Desktop/cloned/aaclasswork/W10D1/jQueryLite/src/dom_node_collection.jsz");
+const DOMNodeCollection = require("./dom_node_collection");
 
 
 window.$l = object => {
-    if (object instanceof HTMLElement){
-        const matches = document.querySelectorAll("object");
-        let matchesArr = DOMNodeCollection.from(matches)
-        return matchesArr;
-    } else if (object instanceof String){
+    if (object instanceof HTMLElement) return new DOMNodeCollection([object])
+    else if (typeof object === "string"){
         const matches = document.querySelectorAll(object); 
-        let matchesArr =  DOMNodeCollection.from(matches)
-        return matchesArr;
+        return new DOMNodeCollection([matches])
     }
 }
-
-
